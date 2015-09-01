@@ -134,8 +134,8 @@ describe '<%= slugify(config.get("appname")) %>', ->
                             msg: ->
                         })
                     catch e
-                        should(e.plugin).equal PLUGIN_NAME
-                        should(e.message).equal ERRS.MSG
+                        e.plugin.should.equal PLUGIN_NAME
+                        e.message.should.equal ERRS.MSG
                         done()
 
             describe 'are emitted', ->
@@ -149,8 +149,8 @@ describe '<%= slugify(config.get("appname")) %>', ->
                     stream = <%= camelize(config.get("pluginName")) %>()
 
                     stream.on 'error', (e) ->
-                        should(e.plugin).equal PLUGIN_NAME
-                        should(e.message).equal ERRS.STREAM
+                        e.plugin.should.equal PLUGIN_NAME
+                        e.message.should.equal ERRS.STREAM
                         done()
 
                     stream.write fakeFile
